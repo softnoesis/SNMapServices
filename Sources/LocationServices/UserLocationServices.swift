@@ -2,7 +2,7 @@
 //  UserLocationServices.swift
 //  SNMapServices
 //
-//  Created by Ankur on 12/09/22.
+//  Created by iChirag on 12/09/22.
 //  Copyright © 2022 Softnoesis. All rights reserved.
 //
 
