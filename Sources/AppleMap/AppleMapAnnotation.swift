@@ -28,7 +28,6 @@ struct SNMapAnnotationView: View {
        Image(image)
             .background(Color.clear)
             .scaledToFit()
-            .frame(width: 32, height: 32)
-            .cornerRadius(16)
+            
     }
 }

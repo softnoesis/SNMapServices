@@ -17,13 +17,45 @@ struct SNAppleMapView: UIViewRepresentable {
     @Binding var region: MKCoordinateRegion
     
     /// Annotation Pin
-    var pin = [AnnotationPin]()
+    @Binding var pin: [AnnotationPin]
+    
+    /// Map Type
+    var mapType: MKMapType
+    
+    /// User Tracking Mode
+    var userTrackingMode: MKUserTrackingMode
+    
+    ///  Set to YES to add the user location annotation to the map and start updating its location
+    var showsUserLocation: Bool
+    
+    /// Zoom and scroll are enabled by default.
+    var isZoomEnabled: Bool = true
+    var isScrollEnabled: Bool = true
+    
+    var showsBuildings: Bool = false // Affects MKMapTypeStandard
+    var showsTraffic: Bool = false// Affects MKMapTypeStandard and MKMapTypeHybrid
+
+    /// Rotate and pitch are enabled by default on Mac OS X and on iOS 7.0 and later.
+    var isRotateEnabled: Bool = true
+    var isPitchEnabled: Bool = true
+    var showsCompass: Bool = true
+    var showsScale: Bool = true
     
     /// Creates the map view object and configures its initial state
     func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
+        let mapView = MKMapView(frame: context.coordinator.accessibilityFrame)
         mapView.delegate = context.coordinator
-        mapView.userTrackingMode = .follow
+        mapView.mapType = mapType
+        mapView.showsUserLocation = showsUserLocation
+        mapView.userTrackingMode = userTrackingMode
+        mapView.isZoomEnabled = isZoomEnabled
+        mapView.isScrollEnabled = isScrollEnabled
+        mapView.showsBuildings = showsBuildings
+        mapView.showsTraffic = showsTraffic
+        mapView.isRotateEnabled = isRotateEnabled
+        mapView.isPitchEnabled = isPitchEnabled
+        mapView.showsCompass = showsCompass
+        mapView.showsScale = showsScale
         let region = mapView.regionThatFits(region)
         mapView.setRegion(region, animated: true)
         return mapView
@@ -64,10 +96,20 @@ extension SNAppleMapView {
         
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             if annotation is MKUserLocation {
-                let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "UserLocation")
+                /// Here customize current location icon
+               return MKUserLocationView()
+            } else if annotation is SNAppleMapAnnotation {
+                /// Here customize your annotation Pin
+                let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "SNMapAnnotationView")
                 view.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-                view.image = UIImage(named: "")
-                return view
+                if let annotaion = annotation as? SNAppleMapAnnotation, let image = annotaion.image {
+                    let annotationView = UIHostingController(rootView: SNMapAnnotationView(image: image)).view
+                    annotationView?.frame = view.bounds
+                    annotationView?.backgroundColor = .clear
+                    view.backgroundColor = .clear
+                    view.addSubview(annotationView ?? UIView())
+                    return view
+                }
             }
             return nil
         }

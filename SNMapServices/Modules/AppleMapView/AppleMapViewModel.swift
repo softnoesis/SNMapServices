@@ -6,8 +6,32 @@
 //  Copyright © 2022 Softnoesis. All rights reserved.
 //
 
-import UIKit
+import MapKit
+import SwiftUI
 
-class AppleMapViewModel: NSObject {
+class AppleMapViewModel: NSObject, ObservableObject {
 
+    @Published var region: MKCoordinateRegion
+    @Published var pins: [AnnotationPin] = [.t1, .t2, .t3, .t4]
+    
+    var mapType: MKMapType = .standard
+    var userTrackingMode: MKUserTrackingMode = .follow
+    var showUserLocation = true
+    var mapSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    
+    init(region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))) {
+        self.region = region
+    }
+    
+    /// Current Location
+    func getCurrentLocation() {
+        do {
+            if let currentLocation = try UserLocationService.shared.getCurrentLocation() {
+                region = MKCoordinateRegion(center: currentLocation, span: mapSpan)
+            }
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

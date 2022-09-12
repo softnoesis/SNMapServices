@@ -17,6 +17,12 @@
 		925D947128CC98C0009F6BCD /* AppleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925D947028CC98C0009F6BCD /* AppleMapView.swift */; };
 		925D947328CC9E67009F6BCD /* AppleMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925D947228CC9E67009F6BCD /* AppleMapAnnotation.swift */; };
 		925D947628CC9FE6009F6BCD /* AnnotationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925D947528CC9FE6009F6BCD /* AnnotationPin.swift */; };
+		926A57F628CF034E000000A8 /* GoogleMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A57F528CF034E000000A8 /* GoogleMapViewModel.swift */; };
+		926A57F828CF035D000000A8 /* GoogleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A57F728CF035D000000A8 /* GoogleMapView.swift */; };
+		926A57FB28CF0377000000A8 /* MapboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A57FA28CF0377000000A8 /* MapboxView.swift */; };
+		926A57FD28CF038D000000A8 /* MapboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A57FC28CF038D000000A8 /* MapboxViewModel.swift */; };
+		926A580028CF06CE000000A8 /* UserLocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A57FF28CF06CE000000A8 /* UserLocationServices.swift */; };
+		926A580428CF0BBB000000A8 /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 926A580328CF0BBB000000A8 /* Location.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +37,12 @@
 		925D947028CC98C0009F6BCD /* AppleMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapView.swift; sourceTree = "<group>"; };
 		925D947228CC9E67009F6BCD /* AppleMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapAnnotation.swift; sourceTree = "<group>"; };
 		925D947528CC9FE6009F6BCD /* AnnotationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPin.swift; sourceTree = "<group>"; };
+		926A57F528CF034E000000A8 /* GoogleMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapViewModel.swift; sourceTree = "<group>"; };
+		926A57F728CF035D000000A8 /* GoogleMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapView.swift; sourceTree = "<group>"; };
+		926A57FA28CF0377000000A8 /* MapboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxView.swift; sourceTree = "<group>"; };
+		926A57FC28CF038D000000A8 /* MapboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxViewModel.swift; sourceTree = "<group>"; };
+		926A57FF28CF06CE000000A8 /* UserLocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationServices.swift; sourceTree = "<group>"; };
+		926A580328CF0BBB000000A8 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +96,7 @@
 		925D946528CC8D5A009F6BCD /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				926A57FE28CF06BB000000A8 /* LocationServices */,
 				925D947428CC9FD3009F6BCD /* Model */,
 				925D946628CC8D66009F6BCD /* AppleMap */,
 			);
@@ -103,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				925D945B28CC8CFD009F6BCD /* Assets.xcassets */,
+				926A580328CF0BBB000000A8 /* Location.gpx */,
 			);
 			path = Resouces;
 			sourceTree = "<group>";
@@ -110,6 +124,8 @@
 		925D946A28CC8E01009F6BCD /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				926A57F928CF0367000000A8 /* MapboxView */,
+				926A57F428CF033B000000A8 /* GoogleMapView */,
 				925D946D28CC989D009F6BCD /* AppleMapView */,
 				925D945928CC8CF9009F6BCD /* ContentView.swift */,
 			);
@@ -131,6 +147,32 @@
 				925D947528CC9FE6009F6BCD /* AnnotationPin.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		926A57F428CF033B000000A8 /* GoogleMapView */ = {
+			isa = PBXGroup;
+			children = (
+				926A57F528CF034E000000A8 /* GoogleMapViewModel.swift */,
+				926A57F728CF035D000000A8 /* GoogleMapView.swift */,
+			);
+			path = GoogleMapView;
+			sourceTree = "<group>";
+		};
+		926A57F928CF0367000000A8 /* MapboxView */ = {
+			isa = PBXGroup;
+			children = (
+				926A57FA28CF0377000000A8 /* MapboxView.swift */,
+				926A57FC28CF038D000000A8 /* MapboxViewModel.swift */,
+			);
+			path = MapboxView;
+			sourceTree = "<group>";
+		};
+		926A57FE28CF06BB000000A8 /* LocationServices */ = {
+			isa = PBXGroup;
+			children = (
+				926A57FF28CF06CE000000A8 /* UserLocationServices.swift */,
+			);
+			path = LocationServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				925D945F28CC8CFD009F6BCD /* Preview Assets.xcassets in Resources */,
+				926A580428CF0BBB000000A8 /* Location.gpx in Resources */,
 				925D945C28CC8CFD009F6BCD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,12 +249,17 @@
 			files = (
 				925D947628CC9FE6009F6BCD /* AnnotationPin.swift in Sources */,
 				925D947328CC9E67009F6BCD /* AppleMapAnnotation.swift in Sources */,
+				926A57F628CF034E000000A8 /* GoogleMapViewModel.swift in Sources */,
 				925D947128CC98C0009F6BCD /* AppleMapView.swift in Sources */,
 				925D946C28CC976C009F6BCD /* AppDelegate.swift in Sources */,
 				925D946828CC8D9C009F6BCD /* SNAppleMapView.swift in Sources */,
+				926A57F828CF035D000000A8 /* GoogleMapView.swift in Sources */,
 				925D945A28CC8CF9009F6BCD /* ContentView.swift in Sources */,
 				925D946F28CC98B4009F6BCD /* AppleMapViewModel.swift in Sources */,
 				925D945828CC8CF9009F6BCD /* SNMapServicesApp.swift in Sources */,
+				926A580028CF06CE000000A8 /* UserLocationServices.swift in Sources */,
+				926A57FB28CF0377000000A8 /* MapboxView.swift in Sources */,
+				926A57FD28CF038D000000A8 /* MapboxViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +391,9 @@
 				DEVELOPMENT_TEAM = 4LWXH6QV7Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requird your current location permission";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This app requird your current location permission";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requird your current location permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -372,6 +423,9 @@
 				DEVELOPMENT_TEAM = 4LWXH6QV7Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requird your current location permission";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This app requird your current location permission";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requird your current location permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
