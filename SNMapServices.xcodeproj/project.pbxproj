@@ -23,6 +23,10 @@
 		926A57FD28CF038D000000A8 /* MapboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A57FC28CF038D000000A8 /* MapboxViewModel.swift */; };
 		926A580028CF06CE000000A8 /* UserLocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A57FF28CF06CE000000A8 /* UserLocationServices.swift */; };
 		926A580428CF0BBB000000A8 /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 926A580328CF0BBB000000A8 /* Location.gpx */; };
+		926A580728CF3E93000000A8 /* SNMapBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A580628CF3E93000000A8 /* SNMapBoxView.swift */; };
+		926A580A28CF491A000000A8 /* SNMapboxAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A580928CF491A000000A8 /* SNMapboxAnnotation.swift */; };
+		926A580F28CF51F6000000A8 /* SNGoogleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A580E28CF51F6000000A8 /* SNGoogleMapView.swift */; };
+		DB062D0F49B84D38E0D3C9F3 /* Pods_SNMapServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C39CD5D5974EE986C76D8D /* Pods_SNMapServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,13 @@
 		926A57FC28CF038D000000A8 /* MapboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxViewModel.swift; sourceTree = "<group>"; };
 		926A57FF28CF06CE000000A8 /* UserLocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationServices.swift; sourceTree = "<group>"; };
 		926A580328CF0BBB000000A8 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		926A580628CF3E93000000A8 /* SNMapBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNMapBoxView.swift; sourceTree = "<group>"; };
+		926A580828CF409F000000A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		926A580928CF491A000000A8 /* SNMapboxAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNMapboxAnnotation.swift; sourceTree = "<group>"; };
+		926A580E28CF51F6000000A8 /* SNGoogleMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNGoogleMapView.swift; sourceTree = "<group>"; };
+		9BA16CE34DC94769A79D96F4 /* Pods-SNMapServices.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNMapServices.release.xcconfig"; path = "Target Support Files/Pods-SNMapServices/Pods-SNMapServices.release.xcconfig"; sourceTree = "<group>"; };
+		C4C39CD5D5974EE986C76D8D /* Pods_SNMapServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SNMapServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E83054AAFA4A0B7E1225167A /* Pods-SNMapServices.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNMapServices.debug.xcconfig"; path = "Target Support Files/Pods-SNMapServices/Pods-SNMapServices.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,18 +61,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB062D0F49B84D38E0D3C9F3 /* Pods_SNMapServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2581FC906610FD8E2FF2255F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4C39CD5D5974EE986C76D8D /* Pods_SNMapServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		925D944B28CC8CF9009F6BCD = {
 			isa = PBXGroup;
 			children = (
 				925D946528CC8D5A009F6BCD /* Sources */,
 				925D945628CC8CF9009F6BCD /* SNMapServices */,
 				925D945528CC8CF9009F6BCD /* Products */,
+				972E2CCFB1BF6166FD14D427 /* Pods */,
+				2581FC906610FD8E2FF2255F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +98,7 @@
 		925D945628CC8CF9009F6BCD /* SNMapServices */ = {
 			isa = PBXGroup;
 			children = (
+				926A580828CF409F000000A8 /* Info.plist */,
 				925D945728CC8CF9009F6BCD /* SNMapServicesApp.swift */,
 				925D946B28CC976C009F6BCD /* AppDelegate.swift */,
 				925D946A28CC8E01009F6BCD /* Modules */,
@@ -96,8 +119,10 @@
 		925D946528CC8D5A009F6BCD /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				926A57FE28CF06BB000000A8 /* LocationServices */,
 				925D947428CC9FD3009F6BCD /* Model */,
+				926A57FE28CF06BB000000A8 /* LocationServices */,
+				926A580B28CF5128000000A8 /* GoogleMap */,
+				926A580528CF3E6E000000A8 /* MapBox */,
 				925D946628CC8D66009F6BCD /* AppleMap */,
 			);
 			path = Sources;
@@ -175,6 +200,32 @@
 			path = LocationServices;
 			sourceTree = "<group>";
 		};
+		926A580528CF3E6E000000A8 /* MapBox */ = {
+			isa = PBXGroup;
+			children = (
+				926A580628CF3E93000000A8 /* SNMapBoxView.swift */,
+				926A580928CF491A000000A8 /* SNMapboxAnnotation.swift */,
+			);
+			path = MapBox;
+			sourceTree = "<group>";
+		};
+		926A580B28CF5128000000A8 /* GoogleMap */ = {
+			isa = PBXGroup;
+			children = (
+				926A580E28CF51F6000000A8 /* SNGoogleMapView.swift */,
+			);
+			path = GoogleMap;
+			sourceTree = "<group>";
+		};
+		972E2CCFB1BF6166FD14D427 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E83054AAFA4A0B7E1225167A /* Pods-SNMapServices.debug.xcconfig */,
+				9BA16CE34DC94769A79D96F4 /* Pods-SNMapServices.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,9 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 925D946228CC8CFD009F6BCD /* Build configuration list for PBXNativeTarget "SNMapServices" */;
 			buildPhases = (
+				5C8660FA265740D676F95A87 /* [CP] Check Pods Manifest.lock */,
 				925D945028CC8CF9009F6BCD /* Sources */,
 				925D945128CC8CF9009F6BCD /* Frameworks */,
 				925D945228CC8CF9009F6BCD /* Resources */,
+				C2160CA0F9C00BE91296CB1C /* [CP] Embed Pods Frameworks */,
+				6E6F0E74C9D76FA0F3E1B1CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,6 +296,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5C8660FA265740D676F95A87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNMapServices-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E6F0E74C9D76FA0F3E1B1CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SNMapServices/Pods-SNMapServices-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SNMapServices/Pods-SNMapServices-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SNMapServices/Pods-SNMapServices-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2160CA0F9C00BE91296CB1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SNMapServices/Pods-SNMapServices-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SNMapServices/Pods-SNMapServices-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SNMapServices/Pods-SNMapServices-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		925D945028CC8CF9009F6BCD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -254,7 +367,10 @@
 				925D946C28CC976C009F6BCD /* AppDelegate.swift in Sources */,
 				925D946828CC8D9C009F6BCD /* SNAppleMapView.swift in Sources */,
 				926A57F828CF035D000000A8 /* GoogleMapView.swift in Sources */,
+				926A580F28CF51F6000000A8 /* SNGoogleMapView.swift in Sources */,
+				926A580A28CF491A000000A8 /* SNMapboxAnnotation.swift in Sources */,
 				925D945A28CC8CF9009F6BCD /* ContentView.swift in Sources */,
+				926A580728CF3E93000000A8 /* SNMapBoxView.swift in Sources */,
 				925D946F28CC98B4009F6BCD /* AppleMapViewModel.swift in Sources */,
 				925D945828CC8CF9009F6BCD /* SNMapServicesApp.swift in Sources */,
 				926A580028CF06CE000000A8 /* UserLocationServices.swift in Sources */,
@@ -382,6 +498,7 @@
 		};
 		925D946328CC8CFD009F6BCD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E83054AAFA4A0B7E1225167A /* Pods-SNMapServices.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -391,6 +508,7 @@
 				DEVELOPMENT_TEAM = 4LWXH6QV7Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SNMapServices/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requird your current location permission";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This app requird your current location permission";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requird your current location permission";
@@ -399,6 +517,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,6 +533,7 @@
 		};
 		925D946428CC8CFD009F6BCD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BA16CE34DC94769A79D96F4 /* Pods-SNMapServices.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -423,6 +543,7 @@
 				DEVELOPMENT_TEAM = 4LWXH6QV7Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SNMapServices/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requird your current location permission";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This app requird your current location permission";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requird your current location permission";
@@ -431,6 +552,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import GoogleMaps
 
 // MARK: - Delegate
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("Did finish launching")
+        
+        GMSServices.provideAPIKey("YOUR_API_KEY")
         return true
     }
 }

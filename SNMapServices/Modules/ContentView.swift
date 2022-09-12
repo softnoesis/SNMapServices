@@ -18,16 +18,28 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20.0) {
-                NavigationLink(destination: AppleMapView(), tag: Map.apple, selection: $selection) { EmptyView() }
-                appleMapButton
+            ZStack {
+                VStack(spacing: 20.0) {
+                    NavigationLink(destination: AppleMapView(), tag: Map.apple, selection: $selection) { EmptyView() }
+                    appleMapButton
+                    
+                    NavigationLink(destination: MapboxView(), tag: Map.mapbox, selection: $selection) { EmptyView() }
+                    mapBoxMapButton
+                    
+                    NavigationLink(destination: GoogleMapView(), tag: Map.google, selection: $selection) { EmptyView() }
+                    googleMapButton
+                }
                 
-                NavigationLink(destination: MapboxView(), tag: Map.mapbox, selection: $selection) { EmptyView() }
-                mapBoxMapButton
-                
-                NavigationLink(destination: GoogleMapView(), tag: Map.google, selection: $selection) { EmptyView() }
-                googleMapButton
+                VStack {
+                    Spacer()
+                    
+                    Text("SwiftUI")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding()
+                }
             }
+           
             .navigationTitle("SNMapServices")
             .onAppear {
                 getCurrentLocationPermission()
