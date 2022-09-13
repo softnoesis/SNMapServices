@@ -1,4 +1,7 @@
 # SNMapServices
+[![swift-version](https://img.shields.io/badge/Swift-5.6-green)](https://github.com/apple/swift)
+[![swiftui-version](https://img.shields.io/badge/SwiftUI-3.0%20-green)](https://developer.apple.com/documentation/swiftui)
+
 SNMapServices is a serices for iOS written in SwiftUI. It provides Map capability by subclassing Mapbox, Google map and Apple map.
 This Service is an easy to use drawer library meant to imitate the drawer in iOS 14/15's Maps app. It exposes a simple class that allows you to use any SwiftUI view subclass as the drawer content or the primary content.
 
