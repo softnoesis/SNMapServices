@@ -14,7 +14,7 @@ This service can be comparable for Apple, Google and Mapbox map. It will useful 
 * Xcode 12+
 
 ## Preview 
-<img src="https://github.com/iChirag/SNMapServices/blob/main/Preview/apple1.gif" width="200" height="400" /> <img src="https://github.com/iChirag/SNMapServices/blob/main/Preview/mapbox1.gif" width="200" height="400" /> <img src="https://github.com/iChirag/SNMapServices/blob/main/Preview/google1.gif" width="200" height="400" />
+<img src="https://github.com/softnoesis/SNMapServices/blob/main/Preview/apple1.gif" width="200" height="400" /> <img src="https://github.com/softnoesis/SNMapServices/blob/main/Preview/mapbox1.gif" width="200" height="400" /> <img src="https://github.com/softnoesis/SNMapServices/blob/main/Preview/google1.gif" width="200" height="400" />
 
 ## Setup Manager
 To install in project first you need to drag and drop the sources folder into your project. 
