@@ -26,21 +26,22 @@ struct MapboxView: View {
             
             if !viewModel.selectedPinAddress.isEmpty {
                 VStack {
+                    Spacer()
                     HStack {
                         Spacer()
                         Text(viewModel.selectedPinAddress)
+                            .foregroundColor(.white)
                         Spacer()
                     }
                     .frame(height: 50)
-                    .background(.white)
+                    .background(.blue)
                     .cornerRadius(12)
-                  
-                    Spacer()
                 }
                 .animation(.easeIn(duration: 0.5), value: !viewModel.selectedPinAddress.isEmpty)
-                .transition(.scale.combined(with: .move(edge: .top)))
-                .padding(.top, 16)
+                .transition(.scale.combined(with: .move(edge: .bottom)))
+                .padding(.bottom, 70)
                 .padding(.horizontal, 16)
+               
             }
         }
         .onAppear(perform: {
