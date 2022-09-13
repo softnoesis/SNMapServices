@@ -1,9 +1,9 @@
 # SNMapServices
 SNMapServices is a serices for iOS written in SwiftUI. It provides Map capability by subclassing Mapbox, Google map and Apple map.
-This Service is an easy to use drawer library meant to imitate the drawer in iOS 14/15's Maps app. It exposes a simple API that allows you to use any SwiftUI view subclass as the drawer content or the primary content.
+This Service is an easy to use drawer library meant to imitate the drawer in iOS 14/15's Maps app. It exposes a simple class that allows you to use any SwiftUI view subclass as the drawer content or the primary content.
 
 ## Usages 🔥
-This Service can be comparable for Apple, Google and Mapbox map. It will useful for tracking user location, adding annotation pin on map, customize annotation views and user current location view, handle annotation's click and also change map style, type and their regions behaviour.
+This service can be comparable for Apple, Google and Mapbox map. It will useful for tracking user location, adding annotation pin on map, customize annotation views and user current location view, handle annotation's click and also change map style, type and their regions behaviour.
 
 ## Language 
 * SwiftUI
