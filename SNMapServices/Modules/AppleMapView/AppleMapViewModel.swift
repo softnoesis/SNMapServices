@@ -19,6 +19,8 @@ class AppleMapViewModel: NSObject, ObservableObject {
     var showUserLocation = true
     var mapSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     
+    @Published var selectedPinAddress = ""
+    
     init(region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))) {
         self.region = region
     }
@@ -32,6 +34,14 @@ class AppleMapViewModel: NSObject, ObservableObject {
             
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    func getAnnotationTap(_ annotation: SNAppleMapAnnotation) {
+        self.region = MKCoordinateRegion(center: annotation.coordinate, span: mapSpan)
+        self.selectedPinAddress = ""
+        UserLocationService.shared.getAddressFromLatLon(coordinate: annotation.coordinate) { address in
+            self.selectedPinAddress = address
         }
     }
 }

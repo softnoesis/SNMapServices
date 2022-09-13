@@ -17,6 +17,8 @@ class GoogleMapViewModel: NSObject, ObservableObject {
     var mapType: GMSMapViewType = .normal
     var isShowCurrentLocation = true
     
+    @Published var selectedPinAddress = ""
+    
     init(currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708)) {
         self.currentLocation = currentLocation
     }
@@ -30,6 +32,14 @@ class GoogleMapViewModel: NSObject, ObservableObject {
             
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    func getAnnotationTap(_ annotation: CLLocationCoordinate2D) {
+        self.currentLocation = annotation
+        self.selectedPinAddress = ""
+        UserLocationService.shared.getAddressFromLatLon(coordinate: annotation) { address in
+            self.selectedPinAddress = address
         }
     }
 }

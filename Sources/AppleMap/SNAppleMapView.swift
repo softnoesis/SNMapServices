@@ -28,6 +28,9 @@ struct SNAppleMapView: UIViewRepresentable {
     ///  Set to YES to add the user location annotation to the map and start updating its location
     var showsUserLocation: Bool
     
+    ///  Tapped On Annotation
+    var handleAnnotationTapped: ((SNAppleMapAnnotation) -> Void)?
+    
     /// Zoom and scroll are enabled by default.
     var isZoomEnabled: Bool = true
     var isScrollEnabled: Bool = true
@@ -92,6 +95,11 @@ extension SNAppleMapView {
         
         // MARK: MKMapViewDelegate
         public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            if view.annotation is SNAppleMapAnnotation {
+                if let annotation = view.annotation as? SNAppleMapAnnotation {
+                    parent.handleAnnotationTapped?(annotation)
+                }
+            }
         }
         
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

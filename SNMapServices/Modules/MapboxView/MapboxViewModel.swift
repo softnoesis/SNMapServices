@@ -18,6 +18,8 @@ class MapboxViewModel: NSObject, ObservableObject {
     var isShowCurrentLocation = true
     var userTrackingMode: MGLUserTrackingMode = .follow
     
+    @Published var selectedPinAddress = ""
+    
     init(currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708)) {
         self.currentLocation = currentLocation
     }
@@ -31,6 +33,14 @@ class MapboxViewModel: NSObject, ObservableObject {
             
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    func getAnnotationTap(_ annotation: SNMapboxAnnotation) {
+        self.currentLocation = annotation.coordinate
+        self.selectedPinAddress = ""
+        UserLocationService.shared.getAddressFromLatLon(coordinate: annotation.coordinate) { address in
+            self.selectedPinAddress = address
         }
     }
 }

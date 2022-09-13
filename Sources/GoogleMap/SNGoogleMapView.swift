@@ -14,7 +14,7 @@ import UIKit
 
 struct SNGoogleMapView: UIViewRepresentable {
     
-    @Binding var currentLocation: CLLocationCoordinate2D
+    @Binding var currentRegionCenterLocation: CLLocationCoordinate2D
     @Binding var pins: [AnnotationPin]
     
     /// Show User Location
@@ -22,6 +22,9 @@ struct SNGoogleMapView: UIViewRepresentable {
     
     /// Map Type
     var mapType: GMSMapViewType
+    
+    ///  Tapped On Annotation
+    var handleAnnotationTapped: ((CLLocationCoordinate2D) -> Void)?
     
     /// Defaults Parameter set
     var minZoomlevel = 10.0
@@ -47,13 +50,19 @@ struct SNGoogleMapView: UIViewRepresentable {
         mapView.isTrafficEnabled = isTrafficEnabled
         mapView.setMinZoom(Float(minZoomlevel), maxZoom: Float(maxZoomlevel))
         
-        mapView.camera = GMSCameraPosition(latitude: currentLocation.latitude, longitude: currentLocation.longitude, zoom: 16)
+        mapView.camera = GMSCameraPosition(latitude: currentRegionCenterLocation.latitude, longitude: currentRegionCenterLocation.longitude, zoom: 16)
         return mapView
     }
     
     /// Updates the state of the specified view with new information from SwiftUI
     func updateUIView(_ view: GMSMapView, context: Context) {
-        view.camera = GMSCameraPosition(latitude: currentLocation.latitude, longitude: currentLocation.longitude, zoom: 16)
+        view.camera = GMSCameraPosition(latitude: currentRegionCenterLocation.latitude, longitude: currentRegionCenterLocation.longitude, zoom: 16)
+        
+        CATransaction.begin()
+        CATransaction.setValue(2.0, forKey: kCATransactionAnimationDuration)
+        let city = GMSCameraPosition.camera(withLatitude: currentRegionCenterLocation.latitude, longitude: currentRegionCenterLocation.longitude, zoom: 16)
+        view.animate(to: city)
+        CATransaction.commit()
         
         if pins.count > 0 {
             for item in pins {
@@ -77,6 +86,11 @@ extension SNGoogleMapView {
         
         init(_ parent: SNGoogleMapView) {
             self.parent = parent
+        }
+        
+        func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+            parent.handleAnnotationTapped?(marker.position)
+            return true
         }
     }
 }

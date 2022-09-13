@@ -20,9 +20,31 @@ struct AppleMapView: View {
                            pin: $viewModel.pins,
                            mapType: viewModel.mapType,
                            userTrackingMode: viewModel.userTrackingMode,
-                           showsUserLocation: viewModel.showUserLocation)
+                           showsUserLocation: viewModel.showUserLocation) { annotation in
+                viewModel.getAnnotationTap(annotation)
+            }
             
             currentLocationButton
+            
+            if !viewModel.selectedPinAddress.isEmpty {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Text(viewModel.selectedPinAddress)
+                        Spacer()
+                    }
+                    .frame(height: 50)
+                    .background(.white)
+                    .cornerRadius(12)
+                  
+                    Spacer()
+                }
+                .animation(.easeIn(duration: 0.5), value: !viewModel.selectedPinAddress.isEmpty)
+                .transition(.scale.combined(with: .move(edge: .top)))
+                .padding(.top, 16)
+                .padding(.horizontal, 16)
+               
+            }
         }
        
         .onAppear(perform: {

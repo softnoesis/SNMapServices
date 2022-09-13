@@ -14,7 +14,7 @@ import UIKit
 
 struct SNMapBoxView: UIViewRepresentable {
     
-    @Binding var currentLocation: CLLocationCoordinate2D
+    @Binding var currentRegionCenterLocation: CLLocationCoordinate2D
     
     @Binding var pins: [AnnotationPin]
     
@@ -26,6 +26,9 @@ struct SNMapBoxView: UIViewRepresentable {
     
     /// Map Style URL
     var mapStyleURL: URL?
+    
+    ///  Tapped On Annotation
+    var handleAnnotationTapped: ((SNMapboxAnnotation) -> Void)?
 
     /// Show MapBox Logo
     var isShowMapboxLogo = false
@@ -53,13 +56,13 @@ struct SNMapBoxView: UIViewRepresentable {
         mapView.logoView.isHidden = isShowMapboxLogo
         mapView.delegate = context.coordinator
         
-        mapView.setCenter(currentLocation, animated: true)
+        mapView.setCenter(currentRegionCenterLocation, animated: true)
         return mapView
     }
     
     /// Updates the state of the specified view with new information from SwiftUI
     func updateUIView(_ view: MGLMapView, context: Context) {
-        view.setCenter(currentLocation, zoomLevel: zoomLevel, animated: true)
+        view.setCenter(currentRegionCenterLocation, zoomLevel: zoomLevel, animated: true)
         
         if pins.count > 0 {
             let annotation = pins.map { item in
@@ -101,6 +104,14 @@ extension SNMapBoxView {
                 }
             }
             return nil
+        }
+        
+        func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
+            if annotation is SNMapboxAnnotation {
+                if let annotation = annotation as? SNMapboxAnnotation {
+                    parent.handleAnnotationTapped?(annotation)
+                }
+            }
         }
     }
 }

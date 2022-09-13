@@ -15,12 +15,33 @@ struct MapboxView: View {
     var body: some View {
         ZStack {
             
-            SNMapBoxView(currentLocation: $viewModel.currentLocation,
+            SNMapBoxView(currentRegionCenterLocation: $viewModel.currentLocation,
                          pins: $viewModel.pins,
                          userTrackingMode: viewModel.userTrackingMode,
-                         isShowCurrentLocation: viewModel.isShowCurrentLocation)
+                         isShowCurrentLocation: viewModel.isShowCurrentLocation) { annotation in
+                viewModel.getAnnotationTap(annotation)
+            }
             
             currentLocationButton
+            
+            if !viewModel.selectedPinAddress.isEmpty {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Text(viewModel.selectedPinAddress)
+                        Spacer()
+                    }
+                    .frame(height: 50)
+                    .background(.white)
+                    .cornerRadius(12)
+                  
+                    Spacer()
+                }
+                .animation(.easeIn(duration: 0.5), value: !viewModel.selectedPinAddress.isEmpty)
+                .transition(.scale.combined(with: .move(edge: .top)))
+                .padding(.top, 16)
+                .padding(.horizontal, 16)
+            }
         }
         .onAppear(perform: {
             viewModel.getCurrentLocation()
